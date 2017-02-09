@@ -3,18 +3,25 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { AlertModule } from 'ng2-bootstrap';
+
 import { AppComponent } from './app.component';
+import { MemberlistComponent } from './memberlist/memberlist.component';
+
+import { MemberserviceService } from './memberservice.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MemberlistComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [MemberserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
