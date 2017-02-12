@@ -1,4 +1,24 @@
-<h1>
-  {{title}}
-</h1>
-<app-memberlist>load...</app-memberlist>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">baffy</a>
+    <div class="collapse navbar-collapse" id="adminMenu">
+      <ul class="nav navbar-nav">
+        <li>
+          <a routerLink="/newmember" routerLinkActive="active">New Member</a>
+        </li>
+        <li>
+          <a routerLink="/members" routerLinkActive="active">List Members</a>
+        </li>
+        <li>
+          <a routerLink="/newevent" routerLinkActive="active">New Event</a>
+        </li>
+        <li>
+          <a routerLink="/events" routerLinkActive="active">List Events</a>
+        </li>        
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid" style="padding-top: 55px">
+    <router-outlet></router-outlet>
+</div>
