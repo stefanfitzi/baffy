@@ -31,11 +31,11 @@ export class MemberserviceService {
       .then(resp => resp.json())
       .catch(this.handleError)
   }
-  addLocation(location) {
+  addMember(member) {
     let options = new RequestOptions({
       headers: this.getHeaders()
     });
-    return this.http.post(URL, location, options).toPromise()
+    return this.http.post(URL, member, options).toPromise()
       .then(resp => resp.json())
       .catch(this.handleError)
   }

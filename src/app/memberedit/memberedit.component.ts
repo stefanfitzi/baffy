@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Member } from '../memberlist/member';
+import { MemberserviceService } from '../memberservice.service';
 
 @Component({
   selector: 'app-memberedit',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembereditComponent implements OnInit {
 
-  constructor() { }
+  submitted = false;
+  member : Member;
 
-  ngOnInit() {
+  constructor(private memberService: MemberserviceService) { }
+
+    ngOnInit() {
+      this.member = {
+      id: null,
+      name: '',
+      surname: '',
+      address: '',
+      gender: 'female',
+      birthdate: ''
+    }
+  }
+
+  addMember() {
+    this.submitted = true;
+    this.memberService.addMember(this.member)
   }
 
 }
