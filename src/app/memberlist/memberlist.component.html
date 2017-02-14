@@ -7,9 +7,9 @@
   </div>
   <div class="col-sm-4" style="margin-top: 5px;">
     <div class="pull-right">
-      <button class="btn btn-warning btn-sm" (click)="edit(member)">
-Edit
-</button>
+      <a class="btn btn-warning btn-sm" [routerLink]="['../member/edit/', member.id]">
+        Edit
+      </a>
       <button class="btn btn-danger btn-sm" (click)="delete(member)">
 Delete
 </button>

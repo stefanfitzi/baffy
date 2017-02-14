@@ -23,12 +23,12 @@ export class MemberserviceService {
       .catch(this.handleError)
   }
 
-  getLocationById(id: number) {
+  getMemberById(id: number): Promise<Member> {
     let options = new RequestOptions({
       headers: this.getHeaders()
     });
-    return this.http.get(URL + id, options).toPromise()
-      .then(resp => resp.json())
+    return this.http.get(URL + '/' + id, options).toPromise()
+      .then(resp => <Member>resp.json())
       .catch(this.handleError)
   }
   addMember(member) {
@@ -47,11 +47,12 @@ export class MemberserviceService {
       .then()
       .catch(this.handleError)
   }
-  updateLocation(location) {
+  updateMember(member) {
     let options = new RequestOptions({
       headers: this.getHeaders()
     });
-    return this.http.put(URL, location, options).toPromise().then()
+    return this.http.put(URL, member, options).toPromise()
+      .then(resp => resp.json())
       .catch(this.handleError)
   }
   private getHeaders() {
