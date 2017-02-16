@@ -19,6 +19,12 @@ export class MembereditComponent implements OnInit {
         gender: 'female',
         birthdate: ''
       };
+
+  genders = [
+    { value: 'f', display: 'female' },
+    { value: 'm', display: 'male' }
+  ];
+
   memberId;
 
   constructor(private memberService: MemberserviceService,

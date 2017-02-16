@@ -33,16 +33,10 @@
     <div class="col-sm-3">
       <div class="form-group">
         <label for="gender">Gender</label>
-        <div class="radio">
-          <label>         
-            <input type="radio" [value]="male" [(ngModel)]="member.gender" name="gender" name="gender" id="gender">
-            Male
-          </label>
-        </div>
-        <div class="radio">
-          <label> 
-            <input type="radio" [value]="female" [(ngModel)]="member.gender" name="gender" name="gender" id="gender">
-            Female
+        <div *ngFor="let gender of genders">
+          <label>
+            <input type="radio" name="gender" [(ngModel)]="member.gender" [value]="gender.value">
+            {{gender.display}}
           </label>
         </div>
       </div>
