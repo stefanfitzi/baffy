@@ -11,6 +11,9 @@ import { MemberserviceService } from '../memberservice.service';
 export class MemberlistComponent implements OnInit {
 
   members: Member[];
+
+  alert = null;
+
   constructor(private memberService: MemberserviceService) { }
 
   ngOnInit() {
@@ -34,6 +37,7 @@ export class MemberlistComponent implements OnInit {
       .then(data => {
         console.log(data);
         //this.members = data;
+        this.alert = {type: 'success', text: 'Successfully deleted member ' + member.name + ' ' + member.surname}
         this.loadList();
       }).catch(function (err) {
         console.error(err);

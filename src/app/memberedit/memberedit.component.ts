@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MembereditComponent implements OnInit {
 
   submitted = false;
+  alert = null;
   member : Member = {
         id: null,
         name: '',
@@ -47,8 +48,10 @@ export class MembereditComponent implements OnInit {
     this.submitted = true;
     if (this.memberId) {
       this.memberService.updateMember(this.member);
+      this.alert = {type: 'success', text: 'Successfully updated member ' + this.member.name + ' ' + this.member.surname}
     } else {
       this.memberService.addMember(this.member)
+      this.alert = {type: 'success', text: 'Successfully added member ' + this.member.name + ' ' + this.member.surname}
     }
   }
 

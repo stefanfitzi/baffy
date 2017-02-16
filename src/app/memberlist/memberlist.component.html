@@ -1,5 +1,4 @@
-<alert type="success">test alert</alert>
-
+<alert *ngIf="alert" type="{{alert.type}}">{{alert.text}}</alert>
 
 <div class="row" *ngFor="let member of members" [style.background-color]="i%2 == 0 ? '#dddddd' : 'inherit'">
   <div class="col-sm-8">
