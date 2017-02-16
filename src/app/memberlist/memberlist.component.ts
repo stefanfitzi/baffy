@@ -39,8 +39,9 @@ export class MemberlistComponent implements OnInit {
         //this.members = data;
         this.alert = {type: 'success', text: 'Successfully deleted member ' + member.name + ' ' + member.surname}
         this.loadList();
-      }).catch(function (err) {
-        console.error(err);
+      }).catch(error => {
+        this.alert = {type: 'danger', text: 'Error: The member ' + member.name + ' ' + member.surname + ' could not be deleted!'}
+        console.error(error);
       });
     
   }
