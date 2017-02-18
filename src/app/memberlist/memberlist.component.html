@@ -1,19 +1,18 @@
 <alert *ngIf="alert" type="{{alert.type}}">{{alert.text}}</alert>
 
-<div class="row" *ngFor="let member of members" [style.background-color]="i%2 == 0 ? '#dddddd' : 'inherit'">
-  <div class="col-sm-8">
-    <h4 [style.color]="'maroon'">{{member.name}} {{member.surname}}</h4>
-  </div>
-  <div class="col-sm-4" style="margin-top: 5px;">
-    <div class="pull-right">
-      <a class="btn btn-warning btn-sm" [routerLink]="['../member/edit/', member.id]">
-        Edit
-      </a>
-      <button class="btn btn-danger btn-sm" (click)="delete(member)">
-Delete
-</button>
-    </div>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-8">
+    <input #searchBox class="form-control input-lg" placeholder="Search" (keyup)="0" />
   </div>
 </div>
 
-
+<table style="width: 600px">
+  <tr><th>Name</th><th>Address</th><th>Date of birth</th><th>Gender</th><th></th></tr>
+  <tr *ngFor="let member of members | contentFilter:searchBox.value let e=even" [routerLink]="['../member/edit/', member.id]" style="cursor: pointer" [style.background-color]="e ? '#eee' : 'inherit'">
+      <td>{{member.name}} {{member.surname}}</td>
+      <td>{{member.address}} </td>
+      <td>{{member.birthdate}} </td>
+      <td>{{member.gender}} </td>
+      <td><a class="glyphicon glyphicon-remove" style="color:red; cursor: pointer;" (click)="delete(member, $event)"></a> </td>
+  </tr>
+</table>

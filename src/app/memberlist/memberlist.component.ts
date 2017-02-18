@@ -31,8 +31,9 @@ export class MemberlistComponent implements OnInit {
       });
   }
 
-  delete(member: Member) {
+  delete(member: Member, event) {
     console.log('delete');
+    event.stopPropagation();
     this.memberService.removeMember(member.id)
       .then(data => {
         console.log(data);
@@ -43,7 +44,6 @@ export class MemberlistComponent implements OnInit {
         this.alert = {type: 'danger', text: 'Error: The member ' + member.name + ' ' + member.surname + ' could not be deleted!'}
         console.error(error);
       });
-    
   }
 
 }

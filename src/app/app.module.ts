@@ -17,6 +17,7 @@ import { RegisterComponent } from './register/register.component';
 import { EventreportComponent } from './eventreport/eventreport.component';
 
 import { MemberserviceService } from './memberservice.service';
+import { ContentFilterPipe } from './shared/content-filter.pipe';
 
 import {routingModule} from './app.routes';
 
@@ -31,7 +32,8 @@ import {routingModule} from './app.routes';
     EventdetailsComponent,
     EventeditComponent,
     RegisterComponent,
-    EventreportComponent
+    EventreportComponent,
+    ContentFilterPipe
   ],
   imports: [
     BrowserModule,
