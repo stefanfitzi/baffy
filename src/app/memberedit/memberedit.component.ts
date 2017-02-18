@@ -17,7 +17,7 @@ export class MembereditComponent implements OnInit {
         name: '',
         surname: '',
         address: '',
-        gender: 'female',
+        gender: 'f',
         birthdate: ''
       };
 
@@ -44,20 +44,25 @@ export class MembereditComponent implements OnInit {
     }
   }
 
-  addMember() {
-    this.submitted = true;
-    if (this.memberId) {
-      this.memberService.updateMember(this.member);
-      this.alert = {type: 'success', text: 'Successfully updated member ' + this.member.name + ' ' + this.member.surname}
-    } else {
-      this.memberService.addMember(this.member)
-      this.alert = {type: 'success', text: 'Successfully added member ' + this.member.name + ' ' + this.member.surname}
-    }
-  }
-
   saveMember() {
     this.submitted = true;
-    this.memberService.updateMember(this.member);
+    if (this.memberId) {
+      this.memberService.updateMember(this.member)
+        .then (data => {
+          this.alert = {type: 'success', text: 'Successfully updated member ' + this.member.name + ' ' + this.member.surname}
+        })
+        .catch (error => {
+          this.alert = {type: 'danger', text: 'Error: The member ' + this.member.name + ' ' + this.member.surname + ' could not be updated!'}  
+        });
+    } else {
+      this.memberService.addMember(this.member)
+              .then (data => {
+          this.alert = {type: 'success', text: 'Successfully added member ' + this.member.name + ' ' + this.member.surname}
+        })
+        .catch (error => {
+          this.alert = {type: 'danger', text: 'Error: The member ' + this.member.name + ' ' + this.member.surname + ' could not be added!'}  
+        });
+    }
   }
 
 }
