@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'contentFilter' })
-export class ContentFilterPipe implements PipeTransform {
+@Pipe({ name: 'memberFilter' })
+export class MemberFilterPipe implements PipeTransform {
     transform(value: any[], searchFor: string): any[] {
         if (!searchFor) return value;
         searchFor = searchFor.toLowerCase();

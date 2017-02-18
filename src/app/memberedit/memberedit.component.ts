@@ -18,7 +18,9 @@ export class MembereditComponent implements OnInit {
         surname: '',
         address: '',
         gender: 'f',
-        birthdate: ''
+        birthdate: null,
+        sa_id_number: null,
+        baf_id: null
       };
 
   genders = [

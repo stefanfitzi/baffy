@@ -4,5 +4,7 @@ export interface Member {
     surname: string;
     address: string;
     gender: string;
-    birthdate: string;
+    birthdate: Date;
+    sa_id_number: number;
+    baf_id: number;
 }

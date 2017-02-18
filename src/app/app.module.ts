@@ -17,7 +17,10 @@ import { RegisterComponent } from './register/register.component';
 import { EventreportComponent } from './eventreport/eventreport.component';
 
 import { MemberserviceService } from './memberservice.service';
-import { ContentFilterPipe } from './shared/content-filter.pipe';
+import { EventService } from './event.service';
+import { EventTypeService } from './event-type.service';
+import { MemberFilterPipe } from './shared/member-filter.pipe';
+import { EventFilterPipe } from './shared/event-filter.pipe';
 
 import {routingModule} from './app.routes';
 
@@ -33,7 +36,8 @@ import {routingModule} from './app.routes';
     EventeditComponent,
     RegisterComponent,
     EventreportComponent,
-    ContentFilterPipe
+    MemberFilterPipe,
+    EventFilterPipe
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ import {routingModule} from './app.routes';
     routingModule,
     AlertModule.forRoot()
   ],
-  providers: [MemberserviceService],
+  providers: [MemberserviceService, EventService, EventTypeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

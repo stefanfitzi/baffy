@@ -1,3 +1,30 @@
-<p>
-  eventedit works!
-</p>
+<alert *ngIf="alert" type="{{alert.type}}">{{alert.text}}</alert>
+
+<form *ngIf="!submitted" novalidate (ngSubmit)="saveEvent()" #eventForm="ngForm">
+  <div style="margin-top: 20px"></div>
+  <div class="form-group form-inline">
+    <label for="date" style="width: 100px">Date of event</label>
+    <input class="form-control input" type="date" size="10" [(ngModel)]="event.date" name="date" id="date" required>
+  </div>
+  <div class="form-group form-inline">
+    <label for="type" style="width: 100px">Type</label>
+
+
+    <select [(ngModel)]="event.fk_event_type" name="type" id="type" required>
+      <option *ngFor="let t of eventTypes" [ngValue]="t.id">{{t.name}}</option>
+    </select>
+  </div>
+
+  <div class="form-group form-inline">
+    <label for="name" style="width: 100px">Name</label>
+    <input class="form-control input" type="text" size="40" [(ngModel)]="event.name" name="name" id="name" required/>
+  </div>
+  <button class="btn btn-primary" type="submit" [disabled]="eventForm.invalid">
+    Submit
+  </button>
+</form>
+
+<div *ngIf="submitted">
+  <h2>The form has been submitted with this data:</h2>
+  <pre>{{event | json}}</pre>
+</div>

@@ -1,3 +1,13 @@
-<p>
-  eventlist works!
-</p>
+<alert *ngIf="alert" type="{{alert.type}}">{{alert.text}}</alert>
+
+<input #searchBox class="form-control input" style="width: 200px; margin-left: 620px" placeholder="Search" (keyup)="0" />
+
+<table style="width: 600px">
+  <tr><th>Date</th><th>Type</th><th>Name</th><th></th></tr>
+  <tr *ngFor="let event of events | eventFilter:searchBox.value let e=even" [routerLink]="['../event/edit/', event.id]" style="cursor: pointer" [style.background-color]="e ? '#eee' : 'inherit'">
+      <td>{{event.date | date: 'dd/MM/yyyy'}} </td>
+      <td>{{typeMap[event.fk_event_type]}} </td>
+      <td>{{event.name}}</td>
+      <td><a class="glyphicon glyphicon-remove" style="color:red; cursor: pointer; text-decoration: none" (click)="delete(event, $event)"></a> </td>
+  </tr>
+</table>

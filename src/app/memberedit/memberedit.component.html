@@ -1,47 +1,36 @@
 <alert *ngIf="alert" type="{{alert.type}}">{{alert.text}}</alert>
 <form *ngIf="!submitted" novalidate (ngSubmit)="saveMember()" #memberForm="ngForm">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input class="form-control input-lg" type="text" [(ngModel)]="member.name" name="name" id="name" required/>
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-xs-12 col-sm-8 col-md-6">
-      <div class="form-group">
-        <label for="surname">Surname</label>
-        <input class="form-control input-lg" type="text" [(ngModel)]="member.surname" name="surname" id="surname" required />
-      </div>
-    </div>
+  <div style="margin-top: 20px"></div>
+  <div class="form-group form-inline">
+    <label for="name" style="width: 100px">Name</label>
+    <input class="form-control input" type="text" size="40" [(ngModel)]="member.name" name="name" id="name" required/>
   </div>
-  <div class="clearfix"></div>
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6">
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input class="form-control input-lg" type="text" [(ngModel)]="member.address" name="address" id="address" required />
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-xs-6 col-sm-4 col-md-2">
-      <div class="form-group">
-        <label for="birthdate">Date of birth</label>
-        <input class="form-control input-lg" type="text" [(ngModel)]="member.birthdate" name="birthdate" id="birthdate" required pattern="[0-3][0-9]/[01][0-9]/[12][09][0-9][0-9]">
-      </div>
-    </div>
-    <div class="clearfix"></div>
-    <div class="col-sm-3">
-      <div class="form-group">
-        <label for="gender">Gender</label>
-        <div *ngFor="let gender of genders">
-          <label>
-            <input type="radio" name="gender" [(ngModel)]="member.gender" [value]="gender.value">
-            {{gender.display}}
-          </label>
-        </div>
-      </div>
-    </div>
+  <div class="form-group form-inline">
+    <label for="surname" style="width: 100px">Surname</label>
+    <input class="form-control input" type="text" size="40" [(ngModel)]="member.surname" name="surname" id="surname" required/>
+  </div>
+  <div class="form-group form-inline">
+    <label for="address" style="width: 100px">Address</label>
+    <input class="form-control input" type="text" size="40" [(ngModel)]="member.address" name="address" id="address" required/>
+  </div>
+  <div class="form-group form-inline">
+    <label for="birthdate" style="width: 100px">Date of birth</label>
+    <input class="form-control input" type="date" size="10" [(ngModel)]="member.birthdate" name="birthdate" id="birthdate" required>
+  </div>
+  <div class="form-group form-inline">
+    <label for="gender" style="width: 100px">Gender</label>
+      <label *ngFor="let gender of genders" style="width: 80px">
+          <input type="radio" name="gender" [(ngModel)]="member.gender" [value]="gender.value">
+          {{gender.display}}
+      </label>
+  </div>
+  <div class="form-group form-inline">
+    <label for="saIdNumber" style="width: 100px">S.A. ID Number</label>
+    <input class="form-control input" type="number" size="13" [(ngModel)]="member.sa_id_number" name="saIdNumber" id="saIdNumber" required/>
+  </div>
+  <div class="form-group form-inline">
+    <label for="bafId" style="width: 100px">BAF ID</label>
+    <input class="form-control input" type="number" size="10" [(ngModel)]="member.baf_id" name="bafId" id="bafId" required/>
   </div>
 
   <button class="btn btn-primary" type="submit" [disabled]="memberForm.invalid">
@@ -50,6 +39,6 @@
 </form>
 
 <div *ngIf="submitted">
-<h2>The form has been submitted with this data:</h2>
-<pre>{{member | json}}</pre>
+  <h2>The form has been submitted with this data:</h2>
+  <pre>{{member | json}}</pre>
 </div>
