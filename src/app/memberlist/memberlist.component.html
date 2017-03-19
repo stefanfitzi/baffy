@@ -3,14 +3,15 @@
 <input #searchBox class="form-control input" style="width: 200px; margin-left: 820px" placeholder="Search" (keyup)="0" />
 
 <table style="width: 800px">
-  <tr><th>Name</th><th>Address</th><th>Date of birth</th><th>Gender</th><th>S.A. ID</th><th>BAF ID</th><th></th></tr>
+  <tr><th>Surname</th><th>Name</th><th>Address</th><th>Date of birth</th><th>Gender</th><th>S.A. ID</th><th>BAF ID</th><th></th></tr>
   <tr *ngFor="let member of members | memberFilter:searchBox.value let e=even" [routerLink]="['../member/edit/', member.id]" style="cursor: pointer" [style.background-color]="e ? '#eee' : 'inherit'">
-      <td>{{member.name}} {{member.surname}}</td>
-      <td>{{member.address}} </td>
-      <td>{{member.birthdate | date: 'dd/MM/yyyy'}} </td>
-      <td>{{member.gender}} </td>
-      <td>{{member.sa_id_number}} </td>
-      <td>{{member.baf_id}} </td>
+      <td>{{member.surname}}</td>
+      <td>{{member.name}}</td>
+      <td>{{member.address}}</td>
+      <td>{{member.birthdate | date: 'dd/MM/yyyy'}}</td>
+      <td>{{member.gender}}</td>
+      <td>{{member.sa_id_number}}</td>
+      <td>{{member.baf_id}}</td>
       <td><a class="glyphicon glyphicon-remove" style="color:red; cursor: pointer; text-decoration: none" (click)="delete(member, $event)"></a> </td>
   </tr>
 </table>

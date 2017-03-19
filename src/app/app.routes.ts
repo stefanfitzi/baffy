@@ -20,12 +20,9 @@ const routes: Routes = [
   { path: 'newevent', component: EventeditComponent },
   { path: 'event/edit/:id', component: EventeditComponent },
   
-  { path: 'register', component: RegisterComponent },
-  { path: 'report/:id', component: EventreportComponent },
-  { path: '',
-    redirectTo: '/members',
-    pathMatch: 'full'
-  }
+  { path: 'event/registration/:id', component: RegisterComponent },
+  { path: 'event/report/:id', component: EventreportComponent },
+  { path: '', redirectTo: '/members', pathMatch: 'full' }
 ];
 
 export const routingModule = RouterModule.forRoot(routes);

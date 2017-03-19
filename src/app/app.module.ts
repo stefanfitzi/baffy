@@ -19,6 +19,7 @@ import { EventreportComponent } from './eventreport/eventreport.component';
 import { MemberserviceService } from './memberservice.service';
 import { EventService } from './event.service';
 import { EventTypeService } from './event-type.service';
+import { RegistrationService } from './registration.service'
 import { MemberFilterPipe } from './shared/member-filter.pipe';
 import { EventFilterPipe } from './shared/event-filter.pipe';
 
@@ -46,7 +47,7 @@ import {routingModule} from './app.routes';
     routingModule,
     AlertModule.forRoot()
   ],
-  providers: [MemberserviceService, EventService, EventTypeService],
+  providers: [MemberserviceService, EventService, EventTypeService, RegistrationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

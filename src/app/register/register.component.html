@@ -1,3 +1,24 @@
-<p>
-  register works!
-</p>
+<alert *ngIf="alert" type="{{alert.type}}">{{alert.text}}</alert>
+
+<form *ngIf="!submitted" novalidate (ngSubmit)="register()" #registrationForm="ngForm">
+  <div style="margin-top: 20px"></div>
+  <div class="form-group form-inline">
+    <label for="bafId" style="width: 100px">BAF ID</label>
+    <input class="form-control input" type="number" size="10" [(ngModel)]="bafId" (keyup)="autosubmit()" name="bafId" id="bafId"/>
+  </div>
+  <!--
+  <div class="form-group form-inline">
+    <label for="memberSearch" style="width: 100px">Search by name</label>
+    <input class="form-control input" type="text" size="40" [(ngModel)]="memberSearch" (keyup)="autocomplete()" name="memberSearch" id="memberSearch"/>
+    <pre>{{autocomplete | json}}</pre>
+  </div>
+  -->
+  <button class="btn btn-primary" type="submit" [disabled]="registrationForm.invalid">
+    Submit
+  </button>
+</form>
+
+<div *ngIf="submitted">
+  <h2>The form has been submitted with this data:</h2>
+  <pre>{{member | json}}</pre>
+</div>

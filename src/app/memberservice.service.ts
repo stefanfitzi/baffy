@@ -31,6 +31,17 @@ export class MemberserviceService {
       .then(resp => <Member>resp.json())
       .catch(this.handleError)
   }
+
+  getMemberByBafId(bafid: number): Promise<Member> {
+    let options = new RequestOptions({
+      headers: this.getHeaders()
+    });
+    return this.http.get(URL + '/baf/' + bafid, options).toPromise()
+      .then(resp => <Member>resp.json())
+      .catch(this.handleError)
+  }
+
+
   addMember(member) {
     let options = new RequestOptions({
       headers: this.getHeaders()
