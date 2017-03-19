@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from '../shared/event';
+import { BafEvent } from '../shared/bafevent';
 import { EventType} from '../shared/eventType'
 import { EventService } from '../event.service';
 import { EventTypeService } from '../event-type.service';
@@ -11,7 +11,7 @@ import { EventTypeService } from '../event-type.service';
 })
 export class EventlistComponent implements OnInit {
 
-  events: Event[];
+  events: BafEvent[];
 
     types : EventType[] = [{
         id: 1,
@@ -50,7 +50,7 @@ export class EventlistComponent implements OnInit {
       });
   }
 
-  delete(bafEvent: Event, event) {
+  delete(bafEvent: BafEvent, event) {
     console.log('delete');
     event.stopPropagation();
     this.eventService.removeEvent(bafEvent.id)

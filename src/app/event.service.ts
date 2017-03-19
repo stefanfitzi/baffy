@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Request, RequestMethod, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Event } from './shared/event';
+import { BafEvent } from './shared/bafevent';
 
 const URL = 'http://localhost:3000/event';
 const USER_ID = 'baf-api-user';
@@ -13,22 +13,22 @@ export class EventService {
   constructor(private http: Http) {
   }
 
-  getEvents(): Promise<Event[]> {
+  getEvents(): Promise<BafEvent[]> {
     let options = new RequestOptions({
       headers: this.getHeaders()
     });
     console.log('getEvents');
     return this.http.get(URL).toPromise()
-      .then(resp => <Event[]>resp.json())
+      .then(resp => <BafEvent[]>resp.json())
       .catch(this.handleError)
   }
 
-  getEventById(id: number): Promise<Event> {
+  getEventById(id: number): Promise<BafEvent> {
     let options = new RequestOptions({
       headers: this.getHeaders()
     });
     return this.http.get(URL + '/' + id, options).toPromise()
-      .then(resp => <Event>resp.json())
+      .then(resp => <BafEvent>resp.json())
       .catch(this.handleError)
   }
 

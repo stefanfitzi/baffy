@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from '../shared/event';
+import { BafEvent } from '../shared/bafevent';
 import { EventType } from '../shared/eventType'
 import { EventService } from '../event.service';
 import { EventTypeService } from '../event-type.service';
@@ -14,7 +14,7 @@ export class EventeditComponent implements OnInit {
 
   submitted = false;
   alert = null;
-  event : Event = {
+  event : BafEvent = {
         id: null,
         date: null,
         fk_event_type: null,
@@ -67,6 +67,14 @@ export class EventeditComponent implements OnInit {
         .catch (error => {
           this.alert = {type: 'danger', text: 'Error: The event ' + this.event.date + ' ' + this.event.name + ' could not be added!'}  
         });
+    }
+  }
+
+  parseDate(dateString: string): Date {
+    if (dateString) {
+        return new Date(dateString);
+    } else {
+        return null;
     }
   }
 
