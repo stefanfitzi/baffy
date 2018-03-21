@@ -1,14 +1,14 @@
 import { BafappPage } from './app.po';
 
-describe('bafapp App', function() {
+describe('bafapp App', () => {
   let page: BafappPage;
 
   beforeEach(() => {
     page = new BafappPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('Welcome to app!');
   });
 });
