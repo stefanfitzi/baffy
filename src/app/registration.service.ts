@@ -1,41 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Request, RequestMethod, RequestOptions } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/toPromise';
 import { Member } from './shared/member';
 
-const URL = 'http://localhost:3000/registration';
+const URL = 'http://localhost:49999/registration';
 const USER_ID = 'baf-api-user';
 const USER_SECRET = 'fjw349the';
 
 @Injectable()
 export class RegistrationService {
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   register(registration) {
-    let options = new RequestOptions({
-      headers: this.getHeaders()
-    });
-    return this.http.post(URL, registration, options).toPromise()
-      .then(resp => resp.json())
+    return this.http.post(URL, registration).toPromise()
+      .then(resp => resp)
       .catch(this.handleError)
   }
 
   getReport(id: number): Promise<Member[]> {
-    let options = new RequestOptions({
-      headers: this.getHeaders()
-    });
     console.log('getReport');
-    return this.http.get(URL + '/' + id, options).toPromise()
-      .then(resp => <Member[]>resp.json())
+    return this.http.get(URL + '/' + id).toPromise()
+      .then(resp => <Member[]>resp)
       .catch(this.handleError)
-  }
-
-  private getHeaders() {
-    return new Headers({
-      //'Authorization': `TenantSecret ${USER_ID},${USER_SECRET}`
-    });
   }
 
   private handleError(err) {

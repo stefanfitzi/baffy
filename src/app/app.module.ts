@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AlertModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
+import { AuthComponent } from './auth/auth.component';
 
 import { MemberlistComponent } from './memberlist/memberlist.component';
 import { MemberdetailsComponent } from './memberdetails/memberdetails.component';
@@ -24,11 +25,14 @@ import { MemberFilterPipe } from './shared/member-filter.pipe';
 import { EventFilterPipe } from './shared/event-filter.pipe';
 
 import {routingModule} from './app.routes';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthService } from './auth/auth.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
     MemberlistComponent,
     MemberdetailsComponent,
     MembereditComponent,
@@ -43,11 +47,11 @@ import {routingModule} from './app.routes';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     routingModule,
     AlertModule.forRoot()
   ],
-  providers: [MemberserviceService, EventService, EventTypeService, RegistrationService],
+  providers: [MemberserviceService, EventService, EventTypeService, RegistrationService, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
